@@ -1,0 +1,164 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Page</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="wwwroot/CSS/StyleSheet.css"/>
+    
+</head>
+<body>
+
+    <nav>
+
+        <!-- Logo -->
+        <a href="#" class="logo">&#9670; MySite</a>
+
+        <!-- Links -->
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+
+            <!-- Dropdown item -->
+            <li class="dropdown">
+                <a href="#">Services</a>
+
+                <!-- Dropdown hidden menu -->
+                <ul class="dropdown-menu">
+                    <li><a href="#">&#128187; Web Design</a></li>
+                    <li><a href="#">&#128241; Mobile Apps</a></li>
+                    <li><a href="#">&#127760; SEO</a></li>
+                    <li><a href="#">&#128202; Marketing</a></li>
+                </ul>
+            </li>
+
+            <li><a href="#">Contact</a></li>
+        </ul>
+
+    </nav>
+
+
+    <!-- ════════════════════════
+         HERO SECTION
+    ════════════════════════ -->
+    <div class="hero">
+        <h1>Simple <span>Popup</span> &amp; Dropdown</h1>
+        <p>Hover the menu &#8594; dropdown opens &nbsp;|&nbsp; Click a card &#8594; popup opens</p>
+    </div>
+
+
+    <!-- ════════════════════════
+         CARDS
+    ════════════════════════ -->
+    <div class="cards">
+
+        <!-- Card 1 -->
+        <div class="card">
+            <img src="wwwroot/Images/nature1.jpg" alt="Forest" />
+            <div class="card-body">
+                <div class="card-title">Green Forest</div>
+                <button class="btn-view"
+                        onclick="openPopup(
+          'https://picsum.photos/seed/forest/600/400',
+          'Green Forest',
+          'A peaceful forest full of tall trees, fresh air, and the sound of birds singing in the morning.')">
+                    View Details
+                </button>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card">
+            <img src="wwwroot/Images/nature.jpg" alt="Ocean" />
+            <div class="card-body">
+                <div class="card-title">Blue Ocean</div>
+                <button class="btn-view"
+                        onclick="openPopup(
+          'https://picsum.photos/seed/ocean/600/400',
+          'Blue Ocean',
+          'The calm blue ocean stretches to the horizon. Waves gently kiss the golden sandy shore.')">
+                    View Details
+                </button>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card">
+            <img src="https://picsum.photos/seed/mountain/400/300" alt="Mountain" />
+            <div class="card-body">
+                <div class="card-title">High Mountain</div>
+                <button class="btn-view"
+                        onclick="openPopup(
+          'https://picsum.photos/seed/mountain/600/400',
+          'High Mountain',
+          'Snow-capped peaks rise above the clouds. A perfect destination for adventure seekers.')">
+                    View Details
+                </button>
+            </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="card">
+            <img src="https://picsum.photos/seed/city/400/300" alt="City" />
+            <div class="card-body">
+                <div class="card-title">City Lights</div>
+                <button class="btn-view"
+                        onclick="openPopup(
+          'https://picsum.photos/seed/city/600/400',
+          'City Lights',
+          'The city glows at night with millions of lights. A vibrant place full of life and energy.')">
+                    View Details
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- ════════════════════════
+         POPUP SCREEN
+    ════════════════════════ -->
+    <!-- Overlay — click it to close -->
+    <div class="overlay" id="overlay" onclick="closePopup(event)">
+
+        <!-- Popup box -->
+        <div class="popup" id="popup">
+            <img id="popup-img" src="" alt="Popup Image" />
+            <div class="popup-info">
+                <h3 id="popup-title"></h3>
+                <p id="popup-text"></p>
+            </div>
+            <button class="btn-close-popup" onclick="closePopup()">&#10006; Close</button>
+        </div>
+
+    </div>
+
+
+    <!-- Bootstrap JS (for any Bootstrap features) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+
+  /* ── Open Popup ── */
+  function openPopup(img, title, text) {
+    document.getElementById('popup-img').src          = img;
+    document.getElementById('popup-title').innerText  = title;
+    document.getElementById('popup-text').innerText   = text;
+    document.getElementById('overlay').classList.add('active');
+  }
+
+  /* ── Close Popup ── */
+  function closePopup(event) {
+    /* Close only when clicking the dark overlay (not the white box) */
+    if (!event || event.target === document.getElementById('overlay')) {
+      document.getElementById('overlay').classList.remove('active');
+    }
+  }
+
+    </script>
+
+</body>
+</html>
